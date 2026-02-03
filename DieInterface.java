@@ -13,5 +13,5 @@ public interface DieInterface {
     int getValue();
 
     // get the sides of the die
-    int getSides();
+    int getFaces();
 }
