@@ -33,6 +33,42 @@ public class Character {
         System.out.println(givenStats);
     }
 
+    public int rollStat() {
+        dice.clear();
+        dice.add_die(4,6);
+        dice.roll_all();
+        dice.sortDie();
+        dice.removeDie(0);
+        return dice.getAllValues();
+    }
+
+    public int getAbilityModifier(int abilityScore) {
+        return ((abilityScore - 10)/2);
+    }
+
+    private int getPrimaryAbilityModifier() {
+        return switch(charClass) {
+            case "Magic" -> getAbilityModifier(attributes[2]);
+            case "Ranged" -> getAbilityModifier(attributes[1]);
+            case "Melee" -> getAbilityModifier(attributes[0]);
+            default -> 0;
+        };}
+
+    public int calculateBaseHitPoints() {
+        return hitPoints = (20 + attributes[3]);
+    }
+
+    public int calculateArmorClass() {
+        return armorClass = (10 + getPrimaryAbilityModifier());
+    }
+
+
+    public void rollStats() {
+        for (int i = 0; i <= 5; i++) {
+            attributes[i] = rollStat();
+        }}
+
+
     public void createCharacter(String character_Name, String character_Class) {
         character_name = character_Name;
         characterMatcher = new HashMap<>();
@@ -52,10 +88,10 @@ public class Character {
 
     }
 
-    
-    
+
+
     public String getcharacter_Name() {return character_name; }
-    
+
     public String getCharClass() {
         return charClass;
     }
