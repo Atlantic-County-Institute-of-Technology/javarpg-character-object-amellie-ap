@@ -20,7 +20,7 @@ class dice {
     }
 
     public void add_die(int value, int faces) {
-        for(int i= 0; i <value; i++)
+        for(int i = 0; i <= value; i++)
             add_die(faces);
     }
 
@@ -69,20 +69,26 @@ class dice {
             public int compare(die d1, die d2) {
                 return Integer.compare(d1.getValue(), d2.getValue());
             }
+
+    public int rollStat() {
+        dice.clear();
+        dice.add_die(4,6);
+        return dice.getAllValues();
+    }
+
+
         });
     }
 
     // The die object class used by our dice
-    static class die implements DieInterface {
+    public static class die implements DieInterface {
         private int value;
         private int faces;
         Random random = new Random();
 
         public die (int faces) {
-            this.faces = faces;}
-
-        public int getFaces() {
-            return faces;}
+            this.faces = faces;
+            this.random = new Random();}
 
         public int roll() {
             value = random.nextInt(faces) + 1;
@@ -91,9 +97,9 @@ class dice {
         public int getValue(){
             return value;}
 
+        public int getFaces() {
+            return faces;}
+
 
 
     }}
-
-
-
