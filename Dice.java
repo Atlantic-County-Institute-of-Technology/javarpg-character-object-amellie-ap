@@ -70,12 +70,6 @@ class dice {
                 return Integer.compare(d1.getValue(), d2.getValue());
             }
 
-    public int rollStat() {
-        dice.clear();
-        dice.add_die(4,6);
-        return dice.getAllValues();
-    }
-
 
         });
     }
