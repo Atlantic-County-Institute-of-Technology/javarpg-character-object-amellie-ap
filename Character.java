@@ -66,7 +66,13 @@ public class Character {
     public void rollStats() {
         for (int i = 0; i <= 5; i++) {
             attributes[i] = rollStat();
-        }}
+            }
+            for (int i = 0; i<= 5; i++) {
+                attributes_bonus[i] = getAbilityModifier(attributes[i]);}
+            hitPoints = calculateBaseHitPoints();
+            armorClass = calculateArmorClass();
+
+    }
 
 
     public void createCharacter(String character_Name, String character_Class) {
@@ -84,8 +90,27 @@ public class Character {
         }
         charClass = characterMatcher.get(character_Class.toLowerCase());
 
-        System.out.println(charClass);
 
+    }
+
+    public String toString () {
+        String characterInfo = "Character: ";
+        characterInfo += getcharacter_Name() + " " + "(Level " + getLevel() + " " + getCharClass() + ")\n" +
+        "HP: " + getHitPoints() + " | " + "AC: " + getArmorClass() + "\n";
+
+       for (int i = 0; i <= 2; i++) {
+            characterInfo += statNames[i] + ": " + attributes[i] + "(+" + attributes_bonus[i] + ")" ;
+            if (i != 2) characterInfo += " | ";
+        }
+
+       characterInfo += "\n";
+
+        for (int i = 3; i <= 5; i++) {
+            characterInfo += statNames[i] + ": " + attributes[i] + "(+" + attributes_bonus[i] + ")" ;
+            if (i != 5) characterInfo += " | ";
+        }
+
+        return characterInfo;
     }
 
 
