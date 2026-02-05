@@ -20,7 +20,7 @@ class dice {
     }
 
     public void add_die(int value, int faces) {
-        for(int i = 0; i <= value; i++)
+        for(int i = 0; i < value; i++)
             add_die(faces);
     }
 
